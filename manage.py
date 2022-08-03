@@ -13,7 +13,7 @@ def main():
     envstate = os.getenv('ENV_STATE', 'production')
     if envstate == 'production':
         # settings/production.py
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.production')
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.product')
     else:
         # settings/local.py
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
