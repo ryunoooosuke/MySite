@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "font.css",
+	"sources": [
+		"font.scss"
+	],
+	"names": [],
+	"mappings": "AAWA,AAAA,GAAG,AAAC,CAJA,SAAS,CAAE,IAAgB,CAC3B,SAAS,CALD,YAAmB,CAU9B"
+}

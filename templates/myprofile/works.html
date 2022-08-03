@@ -1,0 +1,160 @@
+{% load static %}
+<div class="section works" id="works">
+    <div class="contents">
+		  <h1 class="title">{{ works.title }}</h1>
+		  <h2 class="sub-title">{{ works.sub_title }}</h2>
+		  <br/>
+		  <div class="main">
+			  {{ works.main_text | linebreaks }}
+			  <br/>
+		</div>
+    <div class="flexbox">
+      {% for contents in work_contents %}
+        <div class="item">
+          <!--<a href="{% url 'myprofile:work_detail' 0 %}" onclick="modalOpen()">-->
+            <img class="work-img" src="{{ contents.top_image.url }}" id="works_{{ contents.id }}" onclick="getWorkDetail('{{ contents.id }}')">
+          <!--</a>-->
+          {{ contents.name }}
+        </div>
+      {% endfor %}
+    </div>
+	</div>
+  <div class="modal" id="modal">
+    <div class="modal-contents">
+      <p id="error-message"></p>
+        <div class="modal-flex">
+            <div class="modal-explanation">
+                <div class="modal-outline">
+                    <h1 id="work-name"></h1>
+                    <p id="work-text"></p>
+                </div>
+                <div class="modal-use-list">
+                    <h1>使用技術等</h1>
+                    <p id="work-skill"></p>
+                </div>
+            </div>
+            <div class="modal-img">
+                <div class="modal-img-list" id="sub-imgs">
+                </div>
+                <div class="modal-img-main">
+                  <a id="main-link" href=""><img class="main-img" id="main-img"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<script>
+
+  // 仕事詳細をjsonで取得
+  function getWorkDetail(id) {
+      var xhr = new XMLHttpRequest();
+      {% autoescape off %}
+      var url = "{% url 'myprofile:work_detail' 0 %}".replace('0', id)
+      {% endautoescape %}
+      xhr.open("GET", url);
+      xhr.onreadystatechange  = function (e) {
+          if (xhr.readyState === 4) {
+              if (xhr.status === 200) {
+                  // 処理
+                  let data = JSON.parse(xhr.responseText);
+                  setWorkDetail(data);
+                  modalOpen();
+                  document.body.classList.add('no-scroll');
+              } else {
+                  //
+              }
+          }
+      };
+      xhr.send();
+  }
+
+  function changeMainImg(id) {
+    main_img = document.getElementById('main-img');
+    sub_img = document.getElementById(id);
+    main_img.src = sub_img.src;
+  }
+
+  function setWorkDetail(data) {
+    work_name = document.getElementById('work-name');
+    work_text = document.getElementById('work-text');
+    work_skill = document.getElementById('work-skill');
+    sub_imgs = document.getElementById('sub-imgs');
+    main_img = document.getElementById('main-img');
+    main_link = document.getElementById('main-link');
+    sub_img_0 = document.getElementById('sub-img-0');
+    work_name.textContent = data.work.name;
+    work_text.innerHTML = data.work_detail.main_text.replace(/\r?\n/g, '<br>');
+    work_skill.innerHTML = data.work_detail.sub_text.replace(/\r?\n/g, '<br>');
+    main_img.src =  data.img_url_root + data.work.top_image;
+    main_link.href = data.work_detail.link;
+    if ((data.work_detail.link === null) || (data.work_detail.link === ""))
+    {
+      main_link.classList.add("link-none")
+    }
+    else if (main_link.classList.contains("link-none"))
+    {
+      main_link.classList.remove("link-none")
+    }
+
+    // 1個目はメイン画像
+    if (sub_img_0 == null)
+    {
+      sub_imgs.innerHTML += '<img  class="sub-img" id="sub-img-0" src="' + main_img.src + '" onclick="changeMainImg(\'sub-img-0\')" >';
+    }
+    else
+    {
+      sub_img_0.src = main_img.src;
+    }
+
+    for (var i = 1; i <= 5; i++)
+    {
+      let id = "sub-img-" + i;
+      let src = data.img_url_root + data.work_detail['sub_image_' + i];
+      let event = "changeMainImg(\'" + id + "\')";
+
+      // 追加
+      if (typeof sub_imgs.children[i] === 'undefined')
+      {
+        if ((data.work_detail['sub_image_' + i] != ''))
+        {
+          sub_imgs.innerHTML += '<img  class="sub-img" id="' + id + '" src="' + src + '" onclick="' + event + '" >';
+        }
+      }
+      else
+      {
+        // 変更
+        if ((data.work_detail['sub_image_' + i] != ''))
+        {
+          sub_img = document.getElementById(id);
+          sub_img.src = src;
+        }
+        // 削除
+        else
+        {
+          let element = document.getElementById(id);
+          if (element != null)
+          {
+            element.remove();
+          }
+        }
+      }
+    }
+  }
+      
+  // モーダルを開く
+  function modalOpen() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'block';
+  }
+
+  // モーダルコンテンツ以外がクリックされた時閉じる
+  addEventListener('click', outsideClose);
+  function outsideClose(e) {
+    if (e.target == modal) {
+        modal.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+    }
+  }
+
+</script>

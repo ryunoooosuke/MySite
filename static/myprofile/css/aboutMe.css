@@ -1,0 +1,47 @@
+.about-me {
+    position: relative;
+    background-color: lightblue;
+    width: 100%;
+    height: 100vh;
+}
+
+.flex-wrapper{
+    display: -webkit-flex;
+    display: flex;
+}
+
+.img-contents{
+    width: 20%;
+    height: 20%;
+    margin-right: 30px;
+}
+
+.my-img{
+    max-width: 100%;
+    max-height:  100%;
+    border-radius: 50%
+}
+
+.about-me > .contents{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-height: 50%;
+}
+
+.contents h1{
+    text-align: center;
+    max-height: 100%;
+}
+
+.contents h2{
+    text-align: center;
+    max-height: 100%;
+}
+
+.contents .main{
+    height: 100%;
+    width: 100%;
+}

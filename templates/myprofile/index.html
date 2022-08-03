@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+{% load sass_tags %}
+<head>
+	<meta charset="utf-8">
+	<title>Nosuke Profile</title>
+	<meta name="description" content="Miwa Ryunosukeのポートフォリオ兼ブログサイト">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/background.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/base.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/aboutSite.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/aboutMe.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/skills.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/works.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/modal.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% sass_src 'myprofile/scss/star_rate.scss' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'myprofile/css/contact.css' %}">
+</head>
+<body>
+	<div class="wrapper">
+	<!----- header----->
+	{% include "myprofile/header.html" %}
+	<!----- /header ----->
+	<!----- main ----->
+	{% include "myprofile/aboutSite.html" %}
+	{% include "myprofile/aboutMe.html" %}
+	{% include "myprofile/skills.html" %}
+	{% include "myprofile/works.html" %}
+	{% include "myprofile/contact.html" %}
+	<!----- /main ----->
+
+	<!----- footer ----->
+	{% include "myprofile/footer.html" %}
+	<!----- /footer ----->
+	</div>
+</body>
+</html>

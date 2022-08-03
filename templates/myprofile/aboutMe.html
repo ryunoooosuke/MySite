@@ -1,0 +1,17 @@
+{% load static %}
+<div class="section about-me" id="about-me">
+	<div class="contents">
+		<h1 class="title">{{ about_me.title }}</h1>
+		<h2 class="sub-title">{{ about_me.sub_title }}</h2>
+		<br/>
+		<div class="flex-wrapper">
+			<div class="img-contents">
+				<img src="{{ about_me.avator.url }}" class="my-img">
+			</div>
+			<div class="main">
+				{{ about_me.main_text | linebreaks }}
+				<br/>
+			</div>
+		</div>
+	</div>
+</div>

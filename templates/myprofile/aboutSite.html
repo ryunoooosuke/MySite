@@ -1,0 +1,20 @@
+<div class="section area" id="home">
+    <div class="about-site">
+        <h1 class="title">{{ about_sites.title }}</h1>
+        <h2 class="sub-title">{{ about_sites.sub_title }}</h2>
+        <div class="wrapper-main">
+            <div class="main">
+                {{ about_sites.main_text | linebreaks }}
+                <br/>
+            </div>
+            <div class="main-english">
+                {{ about_sites.main_text_english | linebreaks }}
+            </div>
+        </div>
+    </div>
+    <ul class="circles">
+        {% for i in for_range_li %}
+            <li></li>
+        {% endfor %}
+    </ul>
+</div>

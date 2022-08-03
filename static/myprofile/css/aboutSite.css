@@ -1,0 +1,33 @@
+.about-site {
+    width: 100%;
+    top:40vh;
+    min-height: 100%;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.about-site h1{
+    text-align: center;
+    color: #fff;
+    max-height: 100%;
+}
+
+.about-site h2{
+    text-align: center;
+    color: #fff;
+    max-height: 100%;
+}
+
+.wrapper-main{
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #fff;
+}
+
+.wrapper-main p{
+    text-align: center;
+}

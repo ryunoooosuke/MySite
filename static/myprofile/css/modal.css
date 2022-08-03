@@ -1,0 +1,123 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-contents {
+    background-color: #f4f4f4;
+    margin: 10% auto;
+    width: 90%;
+    height: 80%;
+    top: 0;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+    position: absolute;
+    top:30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-flex {
+    display: flex;
+    height: 100%;
+}
+
+.modal-img-list {
+    display: flex;
+    flex-wrap: wrap;
+    height: 15%;
+    margin-left: 15px;
+    gap: 15px 4px;
+}
+
+.sub-img {
+    width: 15%;
+    height: 100%;
+    margin-top: 20px;
+    margin-left: 10px;
+    transition-duration: 0.2s;
+}
+
+.sub-img:hover {
+    transform: scale(1.05, 1.05); /*画像の拡大*/
+    cursor: pointer; /*カーソルをポインターにする*/
+}
+
+.main-img {
+    width: 100%;
+    height: 100%;
+    transition-duration: 0.2s;
+}
+
+.main-img:hover {
+    transform: scale(1.01, 1.01); /*画像の拡大*/
+    cursor: pointer; /*カーソルをポインターにする*/
+}
+
+.link-none {
+    pointer-events: none
+}
+
+.modal-img {
+    flex: 3;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.modal-img-main {
+    margin: 0 auto;
+    margin-top: 30px;
+    height: 70%;
+    width: 95%;
+}
+
+.modal-explanation {
+    flex: 2;
+    margin-top: 1%;
+    margin-left: 10px;
+}
+
+.modal-explanation h1 {
+    text-align: center;
+    font-size: clamp(15px, 3vw, 25px);
+    margin-bottom: 10px;
+    position: relative;
+	border-bottom: 5px solid #8a8a8a;
+}
+
+.modal-explanation h1::after {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100px;
+	height: 5px;
+	background-color: #82b9f8;
+}
+
+.modal-explanation P {
+    font-size: clamp(10px, 2vw, 20px);
+}
+
+.modal-outline {
+    height: 55%;
+}
+
+body.no-scroll{
+    overflow: hidden;
+}
+
+
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}

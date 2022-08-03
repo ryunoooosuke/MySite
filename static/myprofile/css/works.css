@@ -1,0 +1,67 @@
+.works{
+    position: relative;
+    background-color: lightblue;
+    width: 100%;
+}
+
+.item {
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 300px;
+  height: 140px;
+}
+
+.work-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition-duration: 0.2s;
+}
+
+.work-img:hover {
+  transform: scale(1.05, 1.05); /*画像の拡大*/
+  cursor: pointer; /*カーソルをポインターにする*/
+}
+
+p {
+  text-align: left;
+}
+
+.flexbox {
+  width: 70%;
+  margin: 0 auto;
+}
+
+@media ( min-width : 1300px ){
+  .flexbox {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .item{
+    margin: 10px;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 200px;
+    flex-grow: 1;
+  }
+  .works > .contents{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-height: 50%;
+  }
+}
+
+@media ( max-width : 400px ){
+  .item{
+    padding: 15px;
+    margin: 5px;
+    width: 100%;
+    height: 200px;
+    flex-grow: 1;
+  }
+}

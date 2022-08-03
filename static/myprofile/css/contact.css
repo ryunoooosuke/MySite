@@ -1,0 +1,120 @@
+.contact {
+    position: relative;
+    background-color: rgba(212, 246, 252, 0.295);
+    width: 100%;
+}
+
+.contact > .contents {
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-height: 50%;
+}
+
+.contact h1 {
+    padding-bottom: 2%;
+}
+
+.contact-form table{
+    margin: auto;
+}
+
+.contact-form th {
+    margin-right: 10px;
+    text-align: left;
+}
+
+.contact-form {
+    font-size: 20px;
+    width: auto;
+}
+
+.contact-form input[type="text"] {
+    width: 750px;
+    height: 25px;
+}
+
+.contact-form textarea{
+    width: 750px;
+    height: 300px;
+}
+
+.errorlist {
+    color: rgb(252, 135, 135);
+}
+
+@media ( max-width : 500px ){
+    .contact-form {
+        font-size: 100%;
+        width: 300px;
+    }
+    
+    .contact-form input[type="text"] {
+        width: 100%;
+        height: 25px;
+    }
+    
+    .contact-form textarea{
+        width: 220px;
+        height: 200px;
+    }
+    .button a {
+        width: 20px;
+    }
+}
+
+.button {
+    width: 75%;
+}
+.button a {
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    position: relative;
+    margin-right: 0;
+    margin-left: auto;
+    padding: 1em 2em;
+    width: 50px;
+    color: #333;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #cccccc;
+    transition: 0.3s;
+  }
+  
+  .button a::before {
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    right: -7px;
+    width: 100%;
+    height: 2px;
+    background-color: #bbbbbb;
+    transition: 0.2s ease 0s;
+  }
+  
+  .button a::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: -7px;
+    width: 2px;
+    height: 100%;
+    background-color: #bbbbbb;
+    transition: 0.2s ease 0.2s;
+  }
+  
+  .button a:hover::before {
+    width: 0%;
+  }
+  
+  .button a:hover::after {
+    height: 0%;
+  }
+  
+  .button a:hover {
+    text-decoration: none;
+    background-color: #6091a7;
+  }
